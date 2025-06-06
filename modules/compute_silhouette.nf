@@ -22,9 +22,9 @@ process compute_silhouette_process {
     script:
     """
     scsilhouette compute-silhouette \\
-	--h5ad_path ${h5ad_file} \\
-	--label_key ${label_key} \\
-	--embedding_key ${embedding_key} \\
+	--h5ad-path ${h5ad_file} \\
+	--label-key ${label_key} \\
+	--embedding-key ${embedding_key} \\
 	--metric ${metric} \\
 	--save-scores \\
 	--save-cluster-summary \\
