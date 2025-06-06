@@ -8,7 +8,7 @@ process viz_dotplot_process {
 
     input:
         path h5ad_path
-        val  groupby
+        val  label_key
         val  embedding_key
 
     output:
@@ -18,7 +18,7 @@ process viz_dotplot_process {
     """
     scsilhouette viz-dotplot \\
         --h5ad-path h5ad_path \\
-        --groupby groupby \\
+        --label-key label_key \\
         --embedding-key embedding_key
     """
 }
