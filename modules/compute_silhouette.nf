@@ -7,9 +7,7 @@ process compute_silhouette_process {
     publishDir "${params.outdir}", mode: 'copy'
     
     input:
-        path h5ad_file
-        val  label_key
-        val  embedding_key
+        tuple path(h5ad_file), val(label_key), val(embedding_key)
         val  metric
         val  save_scores
         val  save_cluster_summary
@@ -22,10 +20,10 @@ process compute_silhouette_process {
     script:
     """
     scsilhouette compute-silhouette \\
-	--h5ad-path ${h5ad_file} \\
-	--label-key ${label_key} \\
-	--embedding-key ${embedding_key} \\
-	--metric ${metric} \\
+	--h5ad-path $h5ad_file \\
+	--label-key $label_key \\
+	--embedding-key $embedding_key \\
+	--metric $metric \\
 	--save-scores \\
 	--save-cluster-summary \\
 	--save-annotation

@@ -8,7 +8,7 @@ process viz_summary_process {
   
     input:
         path silhouette_scores_path
-        val  label
+	tuple val(h5ad_ch), val(label_key_ch), val(embedding_key_ch)
         val  score_col
         val  sort_by
 
@@ -18,10 +18,10 @@ process viz_summary_process {
     script:
     """
     scsilhouette viz-summary \\
-        --silhouette-score-path ${silhouette_scores_path} \\
-        --label ${label} \\
-        --score-col ${score_col} \\
-        --sort-by ${sort_by}
+        --silhouette-score-path $silhouette_scores_path \\
+        --label $label_key_ch \\
+        --score-col $score_col \\
+        --sort-by $sort_by
     """
 }
 

@@ -9,23 +9,23 @@ include { merge_report_process }        from './modules/merge_report.nf'
 
 workflow {
 
-//  csv_rows_ch = Channel
-//    .fromPath(params.datasets_csv)
-//    .splitCsv(header: true)
-
-//  h5ad_ch          = csv_rows_ch.map { row -> file(row.h5ad) }
-//  label_key_ch     = csv_rows_ch.map { row -> row.label_key }
-//  embedding_key_ch = csv_rows_ch.map { row -> row.embedding_key }
-
-  h5ad_ch          = params.h5ad_ch
-  label_key_ch     = params.label_key_ch
-  embedding_key_ch = params.embedding_key_ch
-  
+  def csv_rows_ch =
+      Channel
+        .fromPath(params.datasets_csv)
+        .ifEmpty { exit 1, "Cannot find required datasets input file : ${params.datasets_csv}" }
+        .splitCsv(header: true, sep: ',')
+        .map { row ->
+            def h5ad_ch          = file(row.h5ad)
+            def label_key_ch     = row.label_key
+            def embedding_key_ch = row.embedding_key
+	    
+        // final array for the channel
+        [ h5ad_ch, label_key_ch, embedding_key_ch ]
+      }
+	
   ( silhouette_scores_ch, cluster_summary_ch ) =
       compute_silhouette_process (
-        h5ad_ch,
-        label_key_ch,
-        embedding_key_ch,
+        csv_rows_ch,
         params.metric,
         params.save_scores,
         params.save_cluster_summary,
@@ -34,32 +34,30 @@ workflow {
   ( viz_dataset_summary_ch )  =
       viz_dataset_summary_process (
         cluster_summary_ch,
-        label_key_ch )
-				 
+        csv_rows_ch )
+         
   ( viz_distribution_ch ) =
       viz_distribution_process (
         silhouette_scores_ch,
-      	label_key_ch )
+        csv_rows_ch )
 
   ( viz_dotplot_ch ) =
       viz_dotplot_process (
-        h5ad_ch,
-        label_key_ch,
-      	embedding_key_ch )
-
+        csv_rows_ch )
+  
   ( viz_summary_ch ) =
        viz_summary_process (
          silhouette_scores_ch,
-         label_key_ch,
+         csv_rows_ch,
          params.score_col,
          params.sort_by )
 
-       def report_name = "h5ad_quality_summary_report"
-       merge_report_process (
+  def report_name = "h5ad_quality_summary_report"
+  merge_report_process (
          viz_summary_ch,
-	 viz_dotplot_ch,
-	 viz_distribution_ch,
-	 viz_dataset_summary_ch,
-         report_name )	 
+         viz_dotplot_ch,
+         viz_distribution_ch,
+         viz_dataset_summary_ch,
+         report_name )   
 
 }

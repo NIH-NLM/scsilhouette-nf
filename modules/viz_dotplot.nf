@@ -7,9 +7,7 @@ process viz_dotplot_process {
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
-        path h5ad_path
-        val  label_key
-        val  embedding_key
+        tuple path(h5ad_path), val(label_key), val(embedding_key)
 
     output:
         path("*"), emit: viz_dotplot_ch
@@ -17,9 +15,9 @@ process viz_dotplot_process {
     script:
     """
     scsilhouette viz-dotplot \\
-        --h5ad-path h5ad_path \\
-        --label-key label_key \\
-        --embedding-key embedding_key
+        --h5ad-path $h5ad_path \\
+        --label-key $label_key \\
+        --embedding-key $embedding_key
     """
 }
 

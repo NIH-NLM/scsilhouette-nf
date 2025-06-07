@@ -8,7 +8,7 @@ process viz_distribution_process {
 
     input:
         path silhouette_scores_path
-	val  label
+	tuple val(h5ad_ch), val(label_key_ch), val(embedding_key_ch)
 
     output:
         path ("*"), emit: viz_distribution_ch
@@ -16,8 +16,8 @@ process viz_distribution_process {
     script:
     """
     scsilhouette viz-distribution \\
-    --silhouette-score-path ${silhouette_scores_path} \\
-    --label ${label}
+    --silhouette-score-path $silhouette_scores_path \\
+    --label $label_key_ch
     """
 }
 

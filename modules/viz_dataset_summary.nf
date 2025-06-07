@@ -7,7 +7,7 @@ process viz_dataset_summary_process {
 
     input:
         path cluster_summary_path
-	val  label
+	tuple val(h5ad_ch), val(label_key_ch), val(embedding_key_ch)
 
     output:
         path ("*"), emit: viz_dataset_summary_ch 
@@ -15,8 +15,8 @@ process viz_dataset_summary_process {
     script:
     """
     scsilhouette viz-dataset-summary \\
-    --cluster-summary-path ${cluster_summary_path} \\
-    --label ${label}
+    --cluster-summary-path $cluster_summary_path \\
+    --label $label_key_ch
     """
 }
 
