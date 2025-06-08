@@ -38,7 +38,7 @@ workflow {
          
   ( viz_distribution_ch ) =
       viz_distribution_process (
-        silhouette_scores_ch,
+        cluster_summary_ch,
         csv_rows_ch )
 
   ( viz_dotplot_ch ) =
