@@ -40,9 +40,9 @@ workflow {
 //        cluster_summary_ch,
 //        csv_rows_ch )
 
-  ( viz_dotplot_ch ) =
-      viz_dotplot_process (
-        csv_rows_ch )
+//  ( viz_dotplot_ch ) =
+//      viz_dotplot_process (
+//        csv_rows_ch )
   
 //  def report_name = "h5ad_quality_summary_report"
 //  merge_report_process (
