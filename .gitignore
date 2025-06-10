@@ -4,3 +4,8 @@ docs/build
 data/
 results/
 src/scsilhouette/__pycache__
+dag*
+time*
+trace*
+.nextflow*
+work/

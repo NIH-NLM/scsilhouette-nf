@@ -1,7 +1,6 @@
 #!/usr/bin/env nextflow
 
 include { compute_silhouette_process }  from './modules/compute_silhouette.nf'
-include { viz_dataset_summary_process } from './modules/viz_dataset_summary.nf'
 include { viz_distribution_process }    from './modules/viz_distribution.nf' 
 include { viz_dotplot_process }         from './modules/viz_dotplot.nf'
 include { viz_summary_process }         from './modules/viz_summary.nf'
@@ -31,9 +30,9 @@ workflow {
         params.save_cluster_summary,
         params.save_annotation )
 
-  ( viz_dataset_summary_ch )  =
-      viz_dataset_summary_process (
-        cluster_summary_ch,
+  ( viz_summary_ch )  =
+      viz_summary_process (
+        silhouette_scores_ch,
         csv_rows_ch )
          
   ( viz_distribution_ch ) =
