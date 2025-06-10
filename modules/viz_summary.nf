@@ -18,7 +18,7 @@ process viz_summary_process {
     scsilhouette viz-summary \\
         --silhouette-score-path $silhouette_scores_path \\
         --label $label_key_ch \\
-        --score-col $params.silhouette_score
+        --silhouette-score-col $params.silhouette_score
     """
 }
 

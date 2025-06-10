@@ -10,7 +10,6 @@ process merge_report_process {
         path summary
         path dotplot
         path distribution
-        path dataset_summary
         val  name
 
     output:

@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 include { compute_silhouette_process }  from './modules/compute_silhouette.nf'
-include { viz_distribution_process }    from './modules/viz_distribution.nf' 
+//include { viz_distribution_process }    from './modules/viz_distribution.nf' 
 include { viz_dotplot_process }         from './modules/viz_dotplot.nf'
 include { viz_summary_process }         from './modules/viz_summary.nf'
 include { merge_report_process }        from './modules/merge_report.nf'
@@ -35,28 +35,20 @@ workflow {
         silhouette_scores_ch,
         csv_rows_ch )
          
-  ( viz_distribution_ch ) =
-      viz_distribution_process (
-        cluster_summary_ch,
-        csv_rows_ch )
+//  ( viz_distribution_ch ) =
+//      viz_distribution_process (
+//        cluster_summary_ch,
+//        csv_rows_ch )
 
   ( viz_dotplot_ch ) =
       viz_dotplot_process (
         csv_rows_ch )
   
-  ( viz_summary_ch ) =
-       viz_summary_process (
-         silhouette_scores_ch,
-         csv_rows_ch,
-         params.score_col,
-         params.sort_by )
-
-  def report_name = "h5ad_quality_summary_report"
-  merge_report_process (
-         viz_summary_ch,
-         viz_dotplot_ch,
-         viz_distribution_ch,
-         viz_dataset_summary_ch,
-         report_name )   
+//  def report_name = "h5ad_quality_summary_report"
+//  merge_report_process (
+//         viz_summary_ch,
+//         viz_dotplot_ch,
+//         viz_distribution_ch,
+//         report_name )   
 
 }
