@@ -8,7 +8,6 @@ This section documents the Nextflow modules used within `scsilhouette-nf`.
 
    compute_silhouette.nf
    merge_report.nf
-   viz_dataset_summary.nf
    viz_distribution.nf
    viz_dotplot.nf
    viz_summary.nf

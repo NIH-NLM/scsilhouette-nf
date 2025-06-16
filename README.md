@@ -58,7 +58,7 @@ Each dataset produces the following under results/{dataset_name}/:
 
 * scores/: Silhouette scores and cluster summaries
 
-* summary/, heatmap/, dotplot/, distribution/, dataset_summary/: Visualizations
+* summary/, heatmap/, dotplot/, distribution/: Visualizations
 
 * report/: Combined *_report.html and *_report.pdf
 
@@ -73,7 +73,6 @@ modules/
 ├── viz_dotplot.nf
 ├── viz_heatmap.nf
 ├── viz_distribution.nf
-├── viz_dataset_summary.nf
 └── merge_report.nf
 ```
 
