@@ -2,11 +2,20 @@
 #
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
+#
+# Added after running the Sphinx configuration command:
+# sphinx-quickstart docs/ --quiet -p "scsilhouette-nf" -a "NIH/NLM" --sep --makefile --no-batchfile
+#
+# -- Path setup --------------------------------------------------------------
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'Nextflow workflow for Scsilhouette python package'
+project = 'scsilhouette-nf'
 copyright = '2025, NIH/NLM'
 author = 'NIH/NLM'
 release = 'v.1.0'

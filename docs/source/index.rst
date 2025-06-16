@@ -8,23 +8,24 @@ Welcome to scsilhouette-nf's documentation!
 .. include:: ../README.md
    :parser: myst_parser.sphinx_
 
-Features
+Contents
 -----------
-
-- Nextflow modules wrapped around the scsilouette python package
-- Nextflow wrapper Scaling across multiple datasets, taking as input multiple h5ad files, and author label
-- Visualize summary stats and correlation with F-scores
-- Nextflow ready
 
 .. toctree::
    :maxdepth: 2
-   :caption: modules
+   :caption: Modules
 
    modules
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Repository
+Additional Resources
+--------------------
 
-   GitHub <https://github.com/NIH-NLM/scsilhouette-nf>
-   Project Website <https://nih-nlm.github.io/scsilhouette-nf>
+* `GitHub <https://github.com/NIH-NLM/scsilhouette-nf>`_
+* `Project Website <https://nih-nlm.github.io/scsilhouette-nf>`_
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
