@@ -31,7 +31,7 @@ jobs:
       - name: Build HTML docs with Sphinx
         shell: bash -l {0}
         run: |
-          sphinx-apidoc -f --separate -o docs/source/ src/scsilhouette
+          sphinx-apidoc -f --separate -o docs/source/ modules/
           make -C docs html
 
       - name: Upload artifact for GitHub Pages
