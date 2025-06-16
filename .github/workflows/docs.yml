@@ -23,6 +23,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Sphinx requirements
+        run: |
+	  pip install -r docs/requirements.txt
+	
       - name: Install any missing packages (optional)
         shell: bash -l {0}
         run: |
