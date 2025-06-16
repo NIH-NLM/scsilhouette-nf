@@ -16,7 +16,7 @@ process viz_distribution_process {
     script:
     """
     scsilhouette viz-distribution \\
-    --summary-csv $cluster_summary_path \\
+    --cluster-summary-path $cluster_summary_path \\
     --label-key $label_key_ch
     """
 }
