@@ -14,7 +14,7 @@ workflow {
         .ifEmpty { exit 1, "Cannot find required datasets input file : ${params.datasets_csv}" }
         .splitCsv(header: true, sep: ',')
         .map { row ->
-            def h5ad_ch          = file(row.h5ad_ch)
+            def h5ad_ch          = file(row.h5ad_file)
             def label_key_ch     = row.label_key
             def embedding_key_ch = row.embedding_key
 	    
