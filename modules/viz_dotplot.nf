@@ -14,7 +14,7 @@ process viz_dotplot_process {
 
     script:
     """
-    scsilhouette viz-dotplot \\
+    /opt/conda/bin/scsilhouette viz-dotplot \\
         --h5ad-path $h5ad_path \\
         --label-key $label_key \\
         --embedding-key $embedding_key

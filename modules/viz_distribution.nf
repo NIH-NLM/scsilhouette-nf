@@ -15,7 +15,7 @@ process viz_distribution_process {
 
     script:
     """
-    scsilhouette viz-distribution \\
+    /opt/conda/bin/scsilhouette viz-distribution \\
     --cluster-summary-path $cluster_summary_path \\
     --label-key $label_key_ch
     """

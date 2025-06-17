@@ -15,7 +15,7 @@ process viz_summary_process {
 
     script:
     """
-    scsilhouette viz-summary \\
+    /opt/conda/bin/scsilhouette viz-summary \\
         --silhouette-score-path $silhouette_scores_path \\
         --label $label_key_ch \\
         --silhouette-score-col $params.silhouette_score

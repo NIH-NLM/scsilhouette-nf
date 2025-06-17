@@ -19,7 +19,7 @@ process compute_silhouette_process {
 
     script:
     """
-    scsilhouette compute-silhouette \\
+    /opt/conda/bin/scsilhouette compute-silhouette \\
 	--h5ad-path $h5ad_file \\
 	--label-key $label_key \\
 	--embedding-key $embedding_key \\
