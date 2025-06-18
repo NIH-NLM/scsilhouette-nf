@@ -17,9 +17,13 @@ workflow {
             def h5ad_ch          = file(row.h5ad_file)
             def label_key_ch     = row.label_key
             def embedding_key_ch = row.embedding_key
+            def organism_ch      = row.organism
+            def disease_ch       = row.disease
+            def tissue_ch        = row.tissue
+            def cell_count_ch = row.cell_count
 	    
         // final array for the channel
-        [ h5ad_ch, label_key_ch, embedding_key_ch ]
+        [ h5ad_ch, label_key_ch, embedding_key_ch , organism_ch, disease_ch, tissue_ch, cell_count_ch ]
       }
 	
   ( silhouette_scores_ch, cluster_summary_ch ) =

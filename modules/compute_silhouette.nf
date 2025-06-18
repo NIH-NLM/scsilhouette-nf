@@ -7,7 +7,7 @@ process compute_silhouette_process {
     publishDir "${params.outdir}", mode: 'copy'
     
     input:
-        tuple path(h5ad_file), val(label_key), val(embedding_key)
+        tuple path(h5ad_file), val(label_key), val(embedding_key) val(organism) val(disease) val(tissue) val(cell_count)
         val  metric
         val  save_scores
         val  save_cluster_summary
@@ -23,6 +23,10 @@ process compute_silhouette_process {
 	--h5ad-path $h5ad_file \\
 	--label-key $label_key \\
 	--embedding-key $embedding_key \\
+	--organism $organism \\
+	--disease $disease \\
+	--tissue $tissue \\
+	--cell_count $cell_count \\
 	--metric $metric \\
 	--save-scores \\
 	--save-cluster-summary \\
