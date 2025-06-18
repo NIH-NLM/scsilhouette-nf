@@ -7,7 +7,7 @@ process compute_silhouette_process {
     publishDir "${params.outdir}", mode: 'copy'
     
     input:
-        tuple path(h5ad_file), val(label_key), val(embedding_key) val(organism) val(disease) val(tissue) val(cell_count)
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), val(disease), val(tissue), val(cell_count)
         val  metric
         val  save_scores
         val  save_cluster_summary
