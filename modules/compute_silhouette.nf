@@ -26,7 +26,7 @@ process compute_silhouette_process {
 	--organism $organism \\
 	--disease $disease \\
 	--tissue $tissue \\
-	--cell_count $cell_count \\
+	--cell-count $cell_count \\
 	--metric $metric \\
 	--save-scores \\
 	--save-cluster-summary \\
