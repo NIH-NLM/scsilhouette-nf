@@ -26,13 +26,13 @@ workflow {
         [ h5ad_ch, label_key_ch, embedding_key_ch , organism_ch, disease_ch, tissue_ch, cell_count_ch ]
       }
 	
-//  ( silhouette_scores_ch, cluster_summary_ch ) =
-//      compute_silhouette_process (
-//        csv_rows_ch,
-//        params.metric,
-//        params.save_scores,
-//        params.save_cluster_summary,
-//        params.save_annotation )
+  ( silhouette_scores_ch, cluster_summary_ch ) =
+      compute_silhouette_process (
+        csv_rows_ch,
+        params.metric,
+        params.save_scores,
+        params.save_cluster_summary,
+        params.save_annotation )
 
   ( viz_summary_ch )  =
       viz_summary_process (
