@@ -1,5 +1,9 @@
 .DS_Store
+*.h5ad*
 *.egg-info
+*.csv*
+*.json*
+*.tsv*
 docs/build
 data/
 results/
@@ -8,4 +12,5 @@ dag*
 time*
 trace*
 .nextflow*
+.nf-test*
 work/
