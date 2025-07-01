@@ -16,6 +16,7 @@ process compute_silhouette_process {
     output:
         path("silhouette_scores*.csv"), emit: silhouette_scores_ch
 	path("cluster_summary*.csv"),   emit: cluster_summary_ch
+        path("annotation*.csv"),        emit: annotations_ch
 
     script:
     """
