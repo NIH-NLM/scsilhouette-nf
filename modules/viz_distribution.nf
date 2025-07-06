@@ -8,7 +8,7 @@ process viz_distribution_process {
 
     input:
         path cluster_summary_path
-	tuple val(h5ad_ch), val(label_key_ch), val(embedding_key_ch)
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), val(disease), val(tissue), val(cell_count)
 
     output:
         path ("*"), emit: viz_distribution_ch
@@ -17,7 +17,7 @@ process viz_distribution_process {
     """
     /opt/conda/bin/scsilhouette viz-distribution \\
     --cluster-summary-path $cluster_summary_path \\
-    --label-key $label_key_ch
+    --label-key $label_key
     """
 }
 

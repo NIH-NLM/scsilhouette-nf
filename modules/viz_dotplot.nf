@@ -7,7 +7,7 @@ process viz_dotplot_process {
     publishDir "${params.outdir}", mode: 'copy'
 
     input:
-        tuple path(h5ad_path), val(label_key), val(embedding_key)
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), val(disease), val(tissue), val(cell_count)
 
     output:
         path("*"), emit: viz_dotplot_ch
