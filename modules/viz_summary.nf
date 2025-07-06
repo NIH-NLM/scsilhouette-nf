@@ -18,8 +18,7 @@ process viz_summary_process {
     /opt/conda/bin/scsilhouette viz-summary \\
         --silhouette-score-path $silhouette_scores_path \\
         --silhouette-score-col $params.silhouette_score \\
-        --label-key $label_key \\
-	--embedding-key $embedding_key
+        --label-key $label_key 
     """
 }
 
