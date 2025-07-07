@@ -2,7 +2,7 @@
 
 process compute_silhouette_process {
 
-    tag '${h5ad_file}-${label_key}-${embedding_key}-${organism}-${disease}-${tissue}-${cell_count}'
+    tag "${h5ad_file}-${label_key}-${embedding_key}-${organism}-${disease}-${tissue}-${cell_count}"
 
 
     publishDir "${params.outdir}", mode: 'copy'
