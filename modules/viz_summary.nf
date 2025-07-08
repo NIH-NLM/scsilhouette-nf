@@ -7,8 +7,9 @@ process viz_summary_process {
     publishDir "${params.outdir}", mode: 'copy'
   
     input:
-        path silhouette_scores_path
-        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), val(disease), val(tissue), val(cell_count)
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), 
+              val(disease), val(tissue), val(cell_count), path(silhouette_scores_csv),
+              path(cluster_summary_csv),path(annotation_csv)
 
     output:
         path("*"), emit: viz_summary_ch
@@ -16,7 +17,7 @@ process viz_summary_process {
     script:
     """
     /opt/conda/bin/scsilhouette viz-summary \\
-        --silhouette-score-path $silhouette_scores_path \\
+        --silhouette-score-path $silhouette_scores_csv \\
         --silhouette-score-col $params.silhouette_score \\
         --label-key $label_key 
     """
