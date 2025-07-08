@@ -26,27 +26,21 @@ workflow {
         [ h5ad_ch, label_key_ch, embedding_key_ch , organism_ch, disease_ch, tissue_ch, cell_count_ch ]
       }
 	
-  ( silhouette_scores_ch, cluster_summary_ch ) =
-      compute_silhouette_process (
+compute_silhouette_process (
         csv_rows_ch,
         params.metric,
         params.save_scores,
         params.save_cluster_summary,
         params.save_annotation )
 
-  ( viz_summary_ch )  =
-      viz_summary_process (
-        silhouette_scores_ch,
-        csv_rows_ch )
+viz_summary_process (
+        compute_silhouette_process.out.compute_silhouette_output_ch )
          
-  ( viz_distribution_ch ) =
-      viz_distribution_process (
-        cluster_summary_ch,
-        csv_rows_ch )
+viz_distribution_process (
+        compute_silhouette_process.out.compute_silhouette_output_ch )
 
-//  ( viz_dotplot_ch ) =
 //      viz_dotplot_process (
-//        csv_rows_ch )
+//        compute_silhouette_process.out.compute_silhouette_output_ch )
 
 //  def report_name = "h5ad_quality_summary_report"
 //  merge_report_process (
