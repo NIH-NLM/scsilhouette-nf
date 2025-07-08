@@ -15,9 +15,9 @@ process compute_silhouette_process {
         val  save_annotation
 
     output:
-        path("silhouette_scores*.csv"), emit: silhouette_scores_ch
-	path("cluster_summary*.csv"),   emit: cluster_summary_ch
-        path("annotation*.csv"),        emit: annotations_ch
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), 
+              val(disease), val(tissue), val(cell_count), path("silhouette_scores*.csv"),
+              path("cluster_summary*.csv"),path("annotation*.csv"), emit: compute_silhouette_output_ch
 
     script:
     """
