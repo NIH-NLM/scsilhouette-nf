@@ -4,7 +4,6 @@ include { compute_silhouette_process }  from './modules/compute_silhouette.nf'
 include { viz_distribution_process }    from './modules/viz_distribution.nf' 
 include { viz_dotplot_process }         from './modules/viz_dotplot.nf'
 include { viz_summary_process }         from './modules/viz_summary.nf'
-include { merge_report_process }        from './modules/merge_report.nf'
 
 workflow {
 
