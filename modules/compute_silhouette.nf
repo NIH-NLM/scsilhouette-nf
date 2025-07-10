@@ -2,13 +2,15 @@
 
 process compute_silhouette_process {
 
-    tag "${h5ad_file}-${label_key}-${embedding_key}-${organism}-${disease}-${tissue}-${cell_count}"
+    tag "${h5ad_file}-${label_key}-${embedding_key}-${organism}-${disease}-${tissue}-${author}-${publication_date}-${publication}-${cell_count}"
 
 
     publishDir "${params.outdir}", mode: 'copy'
     
     input:
-        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), val(disease), val(tissue), val(cell_count)
+        tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism),
+	      val(disease), val(tissue), val(author), val(publication_date), val(publication),
+	      val(cell_count)
         val  metric
         val  save_scores
         val  save_cluster_summary
@@ -16,7 +18,8 @@ process compute_silhouette_process {
 
     output:
         tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism), 
-              val(disease), val(tissue), val(cell_count), path("silhouette_scores*.csv"),
+              val(disease), val(tissue), val(author), val(publication_date), val(publication),
+	      val(cell_count), path("silhouette_scores*.csv"),
               path("cluster_summary*.csv"),path("annotation*.csv"), emit: compute_silhouette_output_ch
 
     script:
