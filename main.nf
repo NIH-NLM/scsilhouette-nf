@@ -21,8 +21,8 @@ workflow {
 	    def filter_ch               = row.filter_normal
 	    def metric_ch               = row.metric
 	    def save_scores_ch          = row.save_scores
-	    def save_cluster_summary_ch = row.save_cluster_summary,
-	    def save_annotation_ch      = row.save_annotation,
+	    def save_cluster_summary_ch = row.save_cluster_summary
+	    def save_annotation_ch      = row.save_annotation
             def tissue_ch               = row.tissue
 	    def author_ch               = row.author
 	    def publication_date_ch     = row.publication_date
