@@ -10,7 +10,6 @@ process viz_summary_process {
         tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism),val(disease),
 	      val(filter), val(metric), val(save_scores), val(save_cluster_summary),val(save_annotation),
 	      val(tissue), val(author), val(publication_date), val(publication),val(cell_count),
-	      path(silhouette_scores_csv),path(cluster_summary_csv),
 	      path(silhouette_scores_csv),path(silhouette_scores_json),
 	      path(cluster_summary_csv),path(cluster_summary_json),
 	      path(annotation_json)
