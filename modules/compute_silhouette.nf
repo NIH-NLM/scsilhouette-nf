@@ -15,7 +15,7 @@ process compute_silhouette_process {
         tuple path(h5ad_file), val(label_key), val(embedding_key), val(organism),val(disease),
 	      val(filter), val(metric), val(save_scores), val(save_cluster_summary),val(save_annotation),
 	      val(tissue), val(author), val(publication_date), val(publication),val(cell_count),
-	      path("silhouette_scores.csv"),path("silhouette_scores*.json"),
+	      path("silhouette_scores*.csv"),path("silhouette_scores*.json"),
 	      path("cluster_summary*.csv"),path("cluster_summary*.json"),
 	      path("annotation*.json"),
 	      emit: compute_silhouette_output_ch
