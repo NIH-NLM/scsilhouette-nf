@@ -37,16 +37,11 @@ workflow {
 	
 
 
-compute_silhouette_process(
-  csv_rows_ch )
+compute_silhouette_output_ch = compute_silhouette_process(csv_rows_ch)
 
-viz_summary_process(
-  compute_silhouette_process.out.compute_silhouette_output_ch )
-
-viz_distribution_process(
-  compute_silhouette_process.out.compute_silhouette_output_ch )
-
-viz_dotplot_process(compute_silhouette_process.out.compute_silhouette_output_ch )
+viz_summary_process(compute_silhouette_output_ch)
+viz_distribution_process(compute_silhouette_output_ch)
+viz_dotplot_process(compute_silhouette_output_ch)
 
 
 }
